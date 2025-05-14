@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+  <body></body>
+  <script>
+    let userName = prompt("Enter Your Username:");
+    let role = prompt("Enter Your Role(admin / member / guest):");
+
+    if (userName.trim() !== "") {
+      if (role === "admin") {
+        alert("Welcome Admin! Redirecting to dashboard...");
+      } else if (role === "member") {
+        alert("Welcome Member! Redirecting to Homepage...");
+      } else if (role === "guest") {
+        alert("Stay in Homepage");
+      } else {
+        alert("Access Denied: Unknown role ");
+      }
+    } else {
+      alert("Please enter a username");
+    }
+  </script>
+</html>

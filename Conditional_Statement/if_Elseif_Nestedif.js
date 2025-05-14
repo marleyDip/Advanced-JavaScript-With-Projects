@@ -281,7 +281,7 @@ console.log(isBetween(j, 10, 50) ? "In Range " + j : "Out of Range " + j);
 console.log(isBetween(j1, 10, 50) ? "In Range " + j1 : "Out of Range " + j1);
 
 /* Simple Calculator --> Input: Two numbers and an operator (+, -, *, /) --> Output: The result of the operation */
-
+// Nested if
 function simpleCalculator(a, b, op) {
   let results;
   if (op === "+") {
@@ -377,3 +377,81 @@ let cleaned = input.trim();
 console.log(cleaned);
 console.log(input.length);
 console.log(cleaned.length);
+
+/* Nested If -- putting one if statement inside another. This is useful when decisions depend on multiple levels of conditions. */
+
+//Login System
+
+let userName = "admin";
+let adminPassword = "1234";
+
+if (userName === "admin") {
+  if (adminPassword === "1234") {
+    console.log("Login Successfully");
+  } else {
+    console.log("Incorrect Password");
+  }
+} else {
+  console.log("User Not Found");
+}
+
+// Write a program to check if a number is positive, and if it is, check whether it's even or odd.
+
+let d = -1;
+if (d >= 0) {
+  if (d % 2 === 0) {
+    console.log("The number is positive & Even");
+  } else {
+    console.log("The number is positive & Odd");
+  }
+} //else if (d === 0) { console.log("The Number is not positive or negative..its zero"); }
+else if (d % 2 === 0) {
+  console.log("The number is negative & Even");
+} else {
+  console.log("The number is negative & Odd");
+}
+
+// Ask for a person's age and whether they have an ID. Only allow entry if age is 18 or above and they have an ID.
+
+let age = 13;
+let hasId = "false";
+if (age >= 18) {
+  if (hasId === "true") {
+    console.log("Entry allowed");
+  } else {
+    console.log("Entry denied");
+  }
+} else {
+  console.log("Only allow entry if age is 18 or above...Your are under 18");
+}
+
+//Check if a password has at least 6 characters. If yes, check if it contains a number.
+
+// A regex is a special string used to match patterns in text. a regex looks like this: /pattern/
+
+let password = "Deep1234";
+if (password.length >= 8) {
+  if (/\d/.test(password)) {
+    console.log("Strong Password");
+  } else {
+    console.log("Weak Password, Must contains Letter & Number");
+  }
+} else {
+  console.log("Password Too Short");
+}
+
+// Write a program to check if there is a vowel in a string.
+
+function checkStringVowel(input) {
+  string = input.toLowerCase();
+
+  if (/[aeiou]/.test(string)) {
+    console.log("The Word", string, "contains a Vowel");
+  } else {
+    console.log("The Word", string, "does Not contain any vowel");
+  }
+}
+
+checkStringVowel("deep");
+checkStringVowel("bdt TK");
+checkStringVowel("Akand");
