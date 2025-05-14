@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+  </head>
+  <body></body>
+  <script>
+    let num1 = Number(prompt("Enter the value1:---"));
+    let num2 = Number(prompt("Enter the value2:---"));
+    let operator = prompt("Enter the Operator(+,-,*,/):---");
+
+    switch (operator) {
+      case "+":
+        console.log("Results: ", num1, operator, num2, "=", num1 + num2);
+        break;
+
+      case "-":
+        console.log(
+          "Results: " +
+            num1 +
+            " " +
+            operator +
+            " " +
+            num2 +
+            " = " +
+            (num1 - num2)
+        );
+        break;
+
+      case "*":
+        console.log(`Results: ${num1} ${operator} ${num2} = ${num1 * num2}`);
+        break;
+
+      case "/":
+        if (num2 === 0) {
+          console.log("Error: division by zero", ",", num1, operator, num2);
+        } else {
+          console.log(
+            "Results: " +
+              num1 +
+              " " +
+              operator +
+              " " +
+              num2 +
+              " = " +
+              (operator === "/" ? num1 / num2 : "")
+          );
+        }
+        break;
+
+      case "**":
+        console.log(`Results: ${num1} ${operator} ${num2} = ${num1 ** num2}`);
+        break;
+
+      default:
+        console.log("Invalid Operators...");
+        break;
+    }
+  </script>
+</html>
