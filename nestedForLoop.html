@@ -8,9 +8,67 @@
   <body></body>
   <script>
     // Logic is equal to magic
-    for (let row = 1; row <= 50; row++) {
+
+    // row
+    for (let row = 1; row <= 5; row++) {
+      // column
       for (let r = 1; r <= 5; r++) {
         document.write("*");
+      }
+      document.write("<br />");
+    }
+
+    // Row = outside Loop
+    for (let r = 1; r <= 5; r++) {
+      // Column = inside loop
+      for (let i = 1; i <= r; i++) {
+        document.write("*");
+      }
+      document.write("<br />");
+    }
+
+    for (let r = 5; r >= 1; r--) {
+      for (let i = 1; i <= r; i++) {
+        document.write("*");
+
+        // i continue print * = 5 times bcz i <= r
+
+        // after i = 4 times bcz i <= 4
+
+        // when (row) outside 5 enter inside (column) loop,  then --> r = 5, i = 1
+        // --> r = 5, i = 2
+        // --> r = 5, i = 3
+        // --> r = 5, i = 4
+        // --> r = 5, i = 5
+
+        // execution complete, then execute break// when (row) outside 4 enter inside (column) loop,  then --> r = 4, i = 1
+        // --> r = 4, i = 2
+        // --> r = 4, i = 3
+        // --> r = 4, i = 4
+
+        // --> r = 5, i = 5  x => its not valid bcz i <= r; 5 <= 4; condition false
+
+        // execution complete, then execute break
+
+        // ..... continue too, it comes r = 1, i =1
+      }
+      document.write("<br />");
+    }
+
+    // row
+    for (let row = 1; row <= 5; row++) {
+      // column
+      for (let r = 1; r <= row; r++) {
+        document.write(r);
+      }
+      document.write("<br />");
+    }
+
+    // row
+    for (let row = 5; row >= 1; row--) {
+      // column
+      for (let r = 1; r <= row; r++) {
+        document.write(r);
       }
       document.write("<br />");
     }
