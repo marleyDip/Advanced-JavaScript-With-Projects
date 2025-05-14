@@ -30,12 +30,25 @@ evenorodd(11);
 
 // n this method, we pass i as an additional parameter with initial value as 1. We print n * i and then recursively call for i+1. We stop the recursion when i becomes 11 as we need to print only 10 multiples of given number and i.
 
+// Recursion is when a function calls itself to solve a smaller part of the problem.
+
 function PrintTable(p, i = 1) {
   if (i == 11) return;
+  // i == 11 ---> base case
+  // <--- this is the return you're asking about...return stops the recursion.
 
   console.log(p + " * " + i + " = " + p * i);
   i++;
-  PrintTable(p, i);
+  PrintTable(p, i); // <== this is the recursive call
+
+  // Without that line, the function would print only once and stop.
+
+  /* For n = 5:
+        i = 1 → prints 5 * 1 = 5
+        Then printTable(5, 2)
+        Then printTable(5, 3)...
+
+  Until i == 11, then it stops (base case). */
 }
 
 // Driver Code

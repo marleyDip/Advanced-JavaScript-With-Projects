@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For looping statement</title>
+  </head>
+  <body></body>
+  <script>
+    for (let start = 1; start <= 10; start++) {
+      console.log("Welcome to Akand NextGen Stack", start);
+    }
+
+    // Even
+    for (let n = 10; n >= 1; n -= 2) {
+      console.log(n);
+    }
+
+    // Odd
+    for (let n = 1; n <= 10; n = n + 2) {
+      console.log(n);
+    }
+
+    // break keyword
+    for (let n = 10; n >= 1; n--) {
+      if (n == 6) {
+        break;
+      }
+      console.log(n); // 10, 9, 8, 7..not 6 bcz break call before console.log
+    }
+
+    for (let n = 10; n >= 1; n--) {
+      console.log(n); // 10, 9, 8, 7, 6....bcz break call after console.log
+
+      if (n == 6) {
+        break;
+      }
+    }
+
+    // Continue
+
+    for (let n = 0; n <= 20; n += 2) {
+      if (n % 3 == 0) {
+        continue;
+      }
+      console.log(n); // missing or skip 6, 12, 18
+    }
+
+    for (let n = 1; n <= 20; n++) {
+      if (n % 5 == 0) {
+        continue;
+      }
+      console.log(n); // missing or skip 5, 10, 15, 20
+    }
+  </script>
+</html>
