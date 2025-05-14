@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>If Condition</title>
+  </head>
+  <body></body>
+
+  <script>
+    let num1 = Number(prompt("Enter the value"));
+    if (num1 % 2 == 0) {
+      console.log(num1, "Even Number");
+    } else {
+      console.log(num1, "Odd number");
+    }
+
+    let score = Number(prompt("Enter The Value"));
+    if (score < 0 && score > 100) {
+      console.log("Invalid Formate. Score Must be in 0 - 100");
+    } else if (score >= 90) {
+      console.log("Grade A");
+    } else if (score >= 80) {
+      console.log("Grade B");
+    } else if (score >= 70) {
+      console.log("Grade C");
+    } else if (score >= 60) {
+      console.log("Grade D");
+    } else {
+      console.log("Grade F");
+    }
+
+    let age = Number(prompt("Enter the Age"));
+
+    if (age >= 0 && age <= 2) {
+      console.log("Infant", age);
+    } else if (age >= 3 && age <= 5) {
+      console.log("Toddler", age);
+    } else if (age >= 6 && age <= 12) {
+      console.log("Child", age);
+    } else if (age >= 12 && age <= 17) {
+      console.log("Teenager", age);
+    } else if (age < 0) {
+      console.log("Invalid..Age must be greater than 0", age);
+    } else {
+      console.log("Adult", age);
+    }
+
+    let voting = Number(prompt("Enter The Age"));
+
+    if (voting >= 18) {
+      console.log("Eligible for Voting", voting);
+    } else {
+      console.log("Invalid age for voting", voting);
+    }
+
+    let trafficLight = prompt("Enter traffic light color").toLowerCase().trim();
+
+    if (trafficLight === "red") {
+      console.log("Stop! The light is red");
+    } else if (trafficLight === "yellow") {
+      console.log("Get ready to Stop!");
+    } else if (trafficLight === "green") {
+      console.log("Go! The light is green");
+    } else {
+      console.log("Invalid input. Please enter red, yellow, green ");
+    }
+
+    let year = Number(prompt("Enter the given year"));
+
+    if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
+      console.log("This is Leap Year", year);
+    } else {
+      console.log("This is not valid leap year", year);
+    }
+  </script>
+</html>

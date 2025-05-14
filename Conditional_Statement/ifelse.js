@@ -368,3 +368,12 @@ function oppositeFaceOfDice(n) {
 
 oppositeFaceOfDice(8);
 oppositeFaceOfDice(2);
+
+/* .trim() is a JavaScript string method that removes whitespace from both ends of a string (but not in the middle). */
+
+let input = "   red   ";
+let cleaned = input.trim();
+
+console.log(cleaned);
+console.log(input.length);
+console.log(cleaned.length);
