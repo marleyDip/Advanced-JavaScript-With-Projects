@@ -114,7 +114,7 @@ console.log(nthTermOfAP1(a4, a5, n));
 
 /* We find the value of n/m. Then we find closest of two possibilities. One is q * m other is (m * (q + 1)) or (m * (q - 1)) depending on whether one of the given two numbers is negative or not. */
 
-function closetNumber(n, m) {
+function closestNumber(n, m) {
   // find the quotient
 
   //let q = Math.floor(n / m); // -13 / 4 = 3.25 == -3; 10 / 3 = 3
@@ -137,12 +137,41 @@ function closetNumber(n, m) {
   return n2; // (13 - 12) < (13 - 20) => 1 < 7, return n1 = 12; (-13 - (-12) ) < (-13 - (-16)) => 1 < 3, return n1 = -12; (10 - 9) < (10 -12) => (math.abs(1) < (math.abs(-2) = 1 < 2, return n1 = 9
 }
 
-console.log(closetNumber(13, 4));
-console.log(closetNumber(-13, 4));
-console.log(closetNumber(13, -4));
-console.log(closetNumber(-13, -4));
-console.log(closetNumber(10, 3));
+console.log(closestNumber(13, 4));
+console.log(closestNumber(-13, 4));
+console.log(closestNumber(13, -4));
+console.log(closestNumber(-13, -4));
+console.log(closestNumber(10, 3));
 
 let r1 = 7;
 let r2 = 2;
-console.log(closetNumber(r1, r2));
+console.log(closestNumber(r1, r2));
+
+// Given two integers n and m (m != 0). Find the number closest to n and divisible by m. If there is more than one such number, then output the one having maximum absolute value.
+
+function closestNumber1(n, m) {
+  //find the quotient
+  let closest = 0;
+  let minDifference = Infinity;
+
+  // check numbers around n
+  for (let i = n - Math.abs(m); i <= n + Math.abs(m); i++) {
+    if (i % m === 0) {
+      // check 9 to 17 = 12, 16 found
+      let difference = Math.abs(n - i); // 13 - 12 = 1, again 13 - 16 = 3
+      if (
+        difference < minDifference ||
+        (difference === minDifference && Math.abs(i) > Math.abs(closest))
+      ) {
+        // 1 < infinity => closest = 12, minDifference = 1;
+        // 3 < 1 => x, not valid
+        closest = i;
+        minDifference = difference;
+      }
+    }
+  }
+  return closest;
+}
+
+console.log(closestNumber1(13, 4));
+console.log(closestNumber1(-13, 4));
