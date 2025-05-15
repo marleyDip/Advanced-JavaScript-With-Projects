@@ -26,6 +26,26 @@ evenorodd(10);
 evenorodd(12);
 evenorodd(11);
 
+// Approach: Using Bitwise AND Operator
+
+function isEvenOdd(n) {
+  if ((n & 1) === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// driver code
+let s = 102;
+if (isEvenOdd(s)) {
+  console.log(
+    "The bitwise and operation with 1 & " + s + " " + "is an Even Number"
+  );
+} else {
+  console.log(`The Bitwise And Operation with 1 & ${s} is an Odd Number`);
+}
+
 // print multiplication table of a number ---> Recursive Approach (পুনরাবৃত্ত পদ্ধতি)
 
 // n this method, we pass i as an additional parameter with initial value as 1. We print n * i and then recursively call for i+1. We stop the recursion when i becomes 11 as we need to print only 10 multiples of given number and i.
