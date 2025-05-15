@@ -133,7 +133,7 @@ function closestNumber(n, m) {
   let n2 = n * m > 0 ? m * (q + 1) : m * (q - 1); // 52 ? 20 : 12 => n2 = 20; -52 > -8 : -16 => n2 = -16; 30 ? 12 : 6 => n2 = 12
 
   // if true, then n1 is the required closet number
-  if (Math.abs(n - n1) < Math.abs(n - n2)) return n1;
+  if (Math.abs(n - n1) < Math.abs(n - n2)) return n1; // 1 < 1 = x false return n2 = 8
   return n2; // (13 - 12) < (13 - 20) => 1 < 7, return n1 = 12; (-13 - (-12) ) < (-13 - (-16)) => 1 < 3, return n1 = -12; (10 - 9) < (10 -12) => (math.abs(1) < (math.abs(-2) = 1 < 2, return n1 = 9
 }
 
@@ -157,14 +157,17 @@ function closestNumber1(n, m) {
   // check numbers around n
   for (let i = n - Math.abs(m); i <= n + Math.abs(m); i++) {
     if (i % m === 0) {
-      // check 9 to 17 = 12, 16 found
-      let difference = Math.abs(n - i); // 13 - 12 = 1, again 13 - 16 = 3
+      // check 9 to 17 = 12, 16 found // check 5 to 9 = 6, 8
+      let difference = Math.abs(n - i); // 13 - 12 = 1, again 13 - 16 = 3 // 7 - 6 = 1, 7 - 8 = -1 = 1
       if (
         difference < minDifference ||
         (difference === minDifference && Math.abs(i) > Math.abs(closest))
       ) {
         // 1 < infinity => closest = 12, minDifference = 1;
         // 3 < 1 => x, not valid
+        // 1 < infinity => closest = 6, minDifference = 1;
+        // 1 < 1 X false it goes to or statement || 1 === 1 && 8 > 6 => closest = 8, minDifference = 1;
+        // "is 1 less than 1" => no, its equal to 1 = 1 < 1 => False
         closest = i;
         minDifference = difference;
       }
@@ -175,3 +178,4 @@ function closestNumber1(n, m) {
 
 console.log(closestNumber1(13, 4));
 console.log(closestNumber1(-13, 4));
+console.log(closestNumber1(7, 2));
