@@ -101,6 +101,7 @@ console.log(nthTermOfAP(10, 15, 5));
 console.log(nthTermOfAP(2, 3, 4));
 
 // used direct formula method
+
 function nthTermOfAP1(a1, a2, n) {
   return a1 + (n - 1) * (a2 - a1);
 }
@@ -169,7 +170,7 @@ function closestNumber1(n, m) {
         // 1 < 1 X false it goes to or statement || 1 === 1 && 8 > 6 => closest = 8, minDifference = 1;
         // "is 1 less than 1" => no, its equal to 1 = 1 < 1 => False
         closest = i;
-        minDifference = difference;
+        minDifference = difference; //
       }
     }
   }
@@ -179,3 +180,16 @@ function closestNumber1(n, m) {
 console.log(closestNumber1(13, 4));
 console.log(closestNumber1(-13, 4));
 console.log(closestNumber1(7, 2));
+
+//Find the factorial of a number n using a for loop.
+function factorial(n) {
+  let result = 1;
+  for (let i = 1; i <= n; i++) {
+    result *= i;
+  }
+
+  return result;
+}
+
+let i = 5;
+console.log(`Factorial of ${i}! is ${factorial(i)}`);
