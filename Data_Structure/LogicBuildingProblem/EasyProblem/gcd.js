@@ -132,6 +132,14 @@ function gcd(a, b) {
   return a;
 }
 console.log(gcd(98, 56));
+console.log(gcd(56, 98));
+console.log(gcd(12, 16));
+/* Compute a % b:
+       56 % 98 = 56 (since 98 > 56, the remainder is 56).
+        => (98, 56)
+       12 % 16 = 12 (since 16 > 12, the remainder is 12).
+       => (16, 12)
+*/
 /*
     gcd(98, 56)
     98 % 56 = 42 → gcd(56, 42)
