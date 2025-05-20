@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Method</title>
+  </head>
+  <body></body>
+  <script>
+    let l = [10, 20, 30, 40, 50];
+
+    let m = l;
+    m.push(99);
+
+    console.log(l); // if m changes anything, l will be changed
+    console.log(m); // deep copy....l behavior also be copy in m
+
+    let l1 = [10, 20, 30, 40, 50];
+
+    let m1 = [...l]; // ...rest operator = Collects elements
+    m.push(99);
+
+    console.log(l1); // here not changed anything, bcz m = ... just only copy the values
+
+    console.log(m1); // shallow copy... only copy the values of l, not behavior
+
+    // l.push(99);
+    // console.log(l);
+
+    /* A shallow copy creates a new object/array that copies the top-level structure of the original,
+
+    but references the same underlying objects for nested properties/elements. */
+
+    const l3 = [10, 20, 30, [40, 50]];
+
+    const m3 = [...l3];
+
+    // Top-level property changed - doesn't affect original
+    m3[0] = 100;
+
+    // Nested property changed - affects original!
+    m3[3][0] = 200;
+
+    console.log(l3); // 10 unchanged but 40 changed to 200
+    console.log(m3);
+
+    console.log(l3.join(", ")); //10, 20, 30, 200,50
+    console.log(m3.join(", ")); // 100, 20, 30, 200,50
+  </script>
+</html>
