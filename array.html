@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // let l = [1, 3, 7, 7, 74, 74];
+    // console.log(l);
+    // console.log(l[0]);
+    // console.log(l[5]);
+
+    // let i = new Array(1, 4, "hello", "deep", 4, 67);
+    // console.log(i);
+    // console.log(i[2]);
+    // console.log(i[5]);
+
+    //but in the case its not same....so new Array does not use
+
+    /* let i2 = [10];
+    console.log(i2);
+    console.log(i2[0]);
+
+    let i3 = new Array(10);
+    console.log(i3);
+    console.log(i3[0]); */ // undefined
+
+    // multi-dimensional array
+    //
+
+    // let p = [10, 20, 30, 88, 77, 66, 55];
+    // let t = p.length;
+
+    // // length() is not method...length is method
+
+    // console.log(t);
+    // console.log(p.reverse());
+    // console.log(p.reverse().join(", "));
+
+    // for (let i = 0; i < t; i++) {
+    //   console.log(i, p[i]);
+    //   console.log(p[i]);
+    //   // 0 p[0] = 10
+    //   // 1 p[1] = 20
+    // }
+
+    // // console.log(i, p[i]);
+    // // ReferenceError: i is not defined
+    // // Js is interpreted language, if i can't comment the error then next for loop can't execute
+
+    // for (let i = t - 1; i >= 0; i--) {
+    //   console.log(i, p[i]);
+    // }
+
+    /* for...of = its only work in array & string...it can't work with object{}, its used for access array values */
+
+    let p = [10, 20, 30, 88, 77, 66, 55];
+
+    for (let v of p) {
+      console.log(v);
+    }
+    // here p values 10, 20, ... store or pass in v
+    //  array is special kind of object, so it gives object values one by one, not object numbered index
+
+    /* for...in = it uses in object for access key - value pair....mainly in array it used for access number index, generally not array */
+
+    for (let k in p) {
+      console.log(k, p[k]);
+    }
+  </script>
+</html>
