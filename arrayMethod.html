@@ -7,44 +7,161 @@
   </head>
   <body></body>
   <script>
+    /* push() method */
+
+    let m = [10, 20, 30, 40, 50];
+
+    m.push(99); // add value in before last => m[5] ; 99
+
+    m.push(55); // add value in last => m[6] ; 99, 55
+
+    console.log(m);
+    console.log(m.join(", "));
+
+    /* unshift() method */
+
+    let n = [10, 20, 30, 40, 50];
+
+    n.unshift(99); // add value in 1st => n[1]; 99, 10
+
+    n.unshift(55); // add value in before 1st => n[0]; 55, 99, 10
+
+    console.log(n);
+    console.log(n.join(", "));
+
+    /* pop() method */
+
+    let o = [10, 20, 30, 40, 50];
+
+    console.log(o.pop()); // delete last value of the array and show the number which delete; 50
+
+    o.pop(); // delete value in last => n[3] ; 40
+    o.pop(); // delete value in before last => n[2]; 30
+
+    console.log(o);
+
+    /* shift() method */
+
+    let p = [10, 20, 30, 40, 50];
+
+    p.pop(); // delete value in 1st => n[0]; 10
+    p.pop(); // delete value in after 1st => n[1]; 20
+
+    console.log(p);
+
+    /* toString() & join() method */
+
+    let q = ["Sofian", "Hasan", "Deep", "Akand"];
+
+    let data = q.toString(); // separated by comma
+    console.log(data); // Sofian, Hasan, Deep, Akand
+
+    let joinData = q.join(" | "); // convert array to string
+    console.log(joinData); // Sofian | Hasan | Deep | Akand
+
+    /* includes() method */
+
     let l = [10, 20, 30, 40, 50];
+    console.log(l.includes(30));
+    // true / false....most used in if -else conditional loop
 
-    let m = l;
-    m.push(99);
+    /* concat() method */
 
-    console.log(l); // if m changes anything, l will be changed
-    console.log(m); // deep copy....l behavior also be copy in m
+    let b = [10, 20, 30, 40, 50];
+    let b1 = ["hi", "deep", 30, "Akand", 50];
 
-    let l1 = [10, 20, 30, 40, 50];
+    let newArray = b1.concat(b);
+    console.log(newArray);
 
-    let m1 = [...l]; // ...rest operator = Collects elements
-    m.push(99);
+    let newArray1 = b.concat(b1);
+    console.log(newArray1);
 
-    console.log(l1); // here not changed anything, bcz m = ... just only copy the values
+    /* splice() method */
 
-    console.log(m1); // shallow copy... only copy the values of l, not behavior
+    let h = [10, 20, 30, 40, 50];
 
-    // l.push(99);
-    // console.log(l);
+    h.splice(1, 2); // (a, b, c) => a = position; b = how many element delete of existing array; c = add element in those position
 
-    /* A shallow copy creates a new object/array that copies the top-level structure of the original,
+    console.log(h);
 
-    but references the same underlying objects for nested properties/elements. */
+    h.splice(1, 0, 88, 77); // add 88 & 77 in 1 position, 0 means no delete
+    console.log(h);
 
-    const l3 = [10, 20, 30, [40, 50]];
+    h.splice(1, 2, 90, 100); // add 88 & 77 in 1 position and delete element n[1] to n[2]; means position 1 and position 2
+    console.log(h);
 
-    const m3 = [...l3];
+    /* slice() method */
 
-    // Top-level property changed - doesn't affect original
-    m3[0] = 100;
+    let s = [10, 20, 30, 40, 50];
 
-    // Nested property changed - affects original!
-    m3[3][0] = 200;
+    let newArray3 = l.slice(0, 2); // (a, b) => a = position (start point), b = less than position (end point) ==> start point equal and less than end point
+    console.log(newArray3);
 
-    console.log(l3); // 10 unchanged but 40 changed to 200
-    console.log(m3);
+    let newArray4 = l.slice(2, 2);
+    console.log(newArray4);
 
-    console.log(l3.join(", ")); //10, 20, 30, 200,50
-    console.log(m3.join(", ")); // 100, 20, 30, 200,50
+    let newArray5 = l.slice(2, 4); // here only show position 2 to less than position 4
+    console.log(newArray5);
+
+    /* flat() method */
+
+    let w = [10, 20, 30, [77, 80], 40, [45, 60], 50];
+
+    console.log(w.flat());
+    // new array with sub-array elements concatenated to a specified depth.
+
+    /* flatmap() method */
+
+    // The flatMap() method first maps all elements of an array and then creates a new array by flattening the array.
+
+    const num = [1, 2, 3, 4];
+    const doubleOdds = num.flatMap((n) => (n % 2 == 1 ? [n * 2] : []));
+
+    console.log(doubleOdds);
+
+    const data1 = [[1], [2, 3], [4]];
+
+    const flattened1 = data1.flatMap((x) => x.map((y) => y * 2));
+
+    console.log(flattened1);
+
+    let v = [10, 20, 30, [77, 80], 40, [45, 60], 50];
+
+    let flattened = v.flat().map((x) => x * 2);
+    // flat() first converts [10, [77, 80], 40] to [10, 77, 80, 40]
+
+    // Then applies map to double each element
+
+    console.log(flattened);
+
+    let v1 = [10, 20, 30, [77, 80], 40, [45, 60], 50];
+
+    let flatMapArray = v1.flatMap((x) =>
+      Array.isArray(x) ? x.map((y) => y * 2) : [x * 2]
+    );
+    //If x is an array (Array.isArray(x)): apply map to double each element
+    // if x is a number => return it doubled inside new array
+    console.log(flatMapArray);
+
+    // let v2 = [10, 20, 30, [77, 80], 40, [45, 60], 50];
+
+    let reduceArray = v.reduce(
+      (accumulator, x) =>
+        accumulator.concat(Array.isArray(x) ? x.map((y) => y * 2) : x * 2),
+      []
+    );
+    // starts with empty array [] as accumulator
+    // for each element x:
+    // if array: double its element & concatenation
+    // if number: double and concatenation
+    console.log(reduceArray);
+
+    /* update array */
+    let z = [10, 20, 30, 40, 50];
+
+    z[3] = 67;
+    z[2] = 77;
+
+    console.log(z);
   </script>
 </html>
