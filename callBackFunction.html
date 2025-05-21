@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function displayName() {
+      console.log("Welcome to Deep akand"); // task is making here, under function...when nee d this output...then below call it
+    }
+    displayName(); // every time need to function call, without call it can't be answer.
+    displayName(); // function is useful, anytime re-declared or call it when need it
+
+    /* loop & function difference => loop execute at once but function where need, their execute  */
+
+    function addData() {
+      console.log(10 + 20);
+    }
+    addData();
+    addData();
+
+    /* function(){} withe parameter */
+
+    function addData1(num1, num2) {
+      console.log(num1 + num2); // actions that can be performed;
+    }
+
+    addData1(25, 99); // pass value to the parameter; its call argument
+    addData1(); // NaN
+
+    function addData2(num1, num2) {
+      console.log(num1 + num2); // actions that can be performed & store and print the value;
+    }
+
+    let n = 50,
+      m = 100;
+    n = 400;
+    addData2(n, m);
+
+    /* function(){} with return type */
+
+    function addData3(num1, num2) {
+      // 50 = num1, 100 = num2 access here
+      return num1 + num2; // addition this; hold 150 & return
+
+      // actions that can be performed & store value but not print;
+
+      // the value return to where call the function [ appData3(a, b) ]
+    }
+
+    let a = 50,
+      b = 100;
+
+    let output = addData3(a, b); // 150 , return value here
+    console.log(output);
+
+    // benefit of return => it hold the value and logic or conditionally used it & print the value those time
+
+    let d = Number("20.5"); // stings return to float number 20.5
+    console.log(d);
+
+    /* Arrow function => Modern JavaScript  */
+
+    let data = () => console.log("Welcome to Akand NextGen Stack");
+
+    data();
+
+    let data1 = (num1, num2) => num1 * num2; // single line
+    // without {}, Arrow function always return the value
+
+    let output1 = data1(10, 49);
+    console.log(output1);
+
+    // single parameter
+    let data5 = (number) => number;
+    console.log(data5(38));
+
+    // when multiple line need to be execute, then { } mandatory
+    let data2 = (num1, num2) => {
+      return num1 * num2;
+    };
+
+    console.log(data2(10, 35));
+
+    /* default value => not assign a value to a parameter then its used default value */
+    let data6 = (n, m = 6) => {
+      return n + m; // n = 30, m = 6; n = 30, m = 50
+    };
+
+    console.log(data6(30)); // 36
+    console.log(data6(30, 50)); // 80
+
+    /* this keyword difference => normal function vs arrow function */
+
+    /* Object methods are actions that can be performed on objects.
+    
+    A method is a function definition stored as a property value. */
+
+    let obj = {
+      name: "deep akand",
+      cName: "NextGen Stack",
+
+      cInfo: function () {
+        console.log(this);
+        console.log(this.name + ", " + this.cName); // this keyword represent the whole object {}
+      },
+    };
+
+    obj.cInfo();
+
+    // arrow function => this
+    let obj1 = {
+      name: "deep akand",
+      cName: "NextGen Stack",
+
+      cInfo: () => {
+        console.log(this); // window {} object
+      },
+    };
+
+    obj1.cInfo();
+  </script>
+</html>
