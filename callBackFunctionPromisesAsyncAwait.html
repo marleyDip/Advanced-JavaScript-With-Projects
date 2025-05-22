@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CallBack Function</title>
+  </head>
+  <body></body>
+  <script>
+    let displayData = (res) => {
+      // do some work
+      return res * 2; // 50 * 2
+    };
+
+    // displayData(50) Actually res = 50
+
+    // sumData receives 3 parameters - 2 numbers & a result function
+    let sumData = (num1, num2, result) => {
+      // 20 + 30 = result(50)
+      return result(num1 + num2); //calls result function & passing the 50 as an argument
+    };
+
+    // when function's inside parameter - that parameter call a function is called callback function
+
+    let outPut = sumData(20, 30, displayData);
+
+    // on the other hand, a callback function is a function that - is passed as an argument to another function
+
+    console.log(outPut);
+
+    /* anonymous function => a function without name (){} */
+
+    let addData = (a, b, result) => {
+      result(a + b);
+    };
+
+    /* 
+        (results)=> {}
+
+        (result) argument for results
+    
+    */
+
+    addData(10, 30, (results) => {
+      console.log(`The sum is: $${results * 2}.00`);
+    });
+
+    let addData1 = (a, b, result) => {
+      result(a + b); // The function continues executing
+    };
+
+    let out = addData1(10, 30, (results) => results * 2);
+
+    console.log(out); // undefined
+
+    let addData2 = (a, b, result) => {
+      return result(a + b); //The function exits immediately after executing the callback
+    };
+
+    let out2 = addData2(10, 30, (results) => results * 2);
+
+    console.log(out2); // 80
+
+    // Practical Example with Calculation
+
+    function calculation(a, b, operation) {
+      return operation(a, b); //  operation(5, 3); The callback performs the actual operation
+    }
+
+    // Different callback Implementations
+
+    let add = (x, y) => x + y;
+
+    // add(5 , 3)
+    // passing operation value a, b as argument here
+
+    let multiply = (x, y) => x * y;
+
+    console.log(calculation(5, 3, add));
+    console.log(calculation(5, 6, multiply));
+
+    /* setTimeout */
+
+    function hello() {
+      console.log("Hello");
+    }
+
+    setTimeout(hello, 4000);
+
+    setTimeout(() => {
+      console.log("Deep");
+    }, 2000);
+
+    /* synchronous */
+
+    function sum(a, b) {
+      console.log(a + b); // 3
+    }
+
+    // sum(1, 2)
+
+    function calculator(a, b, sumCallBack) {
+      sumCallBack(a, b); // call sumCallBack function & passing value 1, 2 as argument
+    }
+
+    calculation(1, 2, sum); // sum is function & add here as  a argument
+
+    calculation(2, 4, (a, b) => console.log(a + b)); // direct call-back....(2, 4) => 6
+
+    /* Asynchronous callback hell*/
+
+    function getData(dataId, getNextData) {
+      setTimeout(() => {
+        console.log("data", dataId);
+        if (getNextData) {
+          getNextData();
+        }
+      }, 3000);
+    }
+
+    getData(1, () => {
+      console.log("getting data2....");
+      getData(2, () => {
+        console.log("getting data3....");
+        getData(3, () => {
+          console.log("getting data4....");
+          getData(4);
+        });
+      });
+    });
+
+    /* 
+        => Promise is for "eventual" completion of task.
+            == means error or successfully but execute
+            
+        ==> it is an object in JS
+        
+        ===> It is a solution callback hell
+    */
+
+    /* 
+        let promise = new Promise((resolve, reject)=> {....}) 
+        
+      => Function with two handlers;
+      => resolve & reject are callback provided by JS  
+    */
+
+    /* 
+        3 states => 
+          i) pending 
+          ii) fulfilled[resolved]
+          iii) rejected       
+    */
+
+    // let promise = new Promise((resolve, reject) => {
+    //   console.log("I am a promise");
+    //   // its  object so prototype is here
+    //   //resolve("Successfully");
+    //   reject("Some error occurred");
+    // });
+
+    /* 
+        Promise Object can be:
+        => Pending = the result is undefined
+
+        => Resolved = the result is a value (fulfilled)
+            => resolve (result)
+
+        => Rejected = the result is an error object  
+            => reject (error)
+    */
+
+    function getData1(dataId, getNextData) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log("data", dataId);
+          resolve("success");
+          if (getNextData) {
+            getNextData();
+          }
+        }, 10000);
+      });
+    }
+  </script>
+</html>
