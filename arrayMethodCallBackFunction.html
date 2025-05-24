@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Method & CallBack Function</title>
+  </head>
+  <body></body>
+  <script>
+    /* forEach() method => To iterate over each item in an array and perform a side effect (like logging, updating, etc.)
+
+    => Return value: undefined — it doesn't return a new array.
+
+    => Used for: side effects (e.g., printing, modifying variables, calling functions) */
+
+    // A function without name is called anonymous function.
+
+    // forEach (parameter) argument call anonymous function thats why is called callback function
+
+    // l = [], value as argument for anonymous function.....it takes or pass single value & execute.
+
+    let l = [10, 20, 30, 40, 50];
+
+    l.forEach((v, i) => {
+      console.log(v * 3, i);
+
+      // here call anonymous function (10), (20), (30), (40), (50)
+
+      //1st parameter value, 2nd parameter index number
+    });
+
+    /* map() method => To transform each item in the array and return a new array
+
+    => Return value: a new array of the same length
+
+    => Used for: data transformation */
+
+    let s = [10, 20, 30, 40, 50];
+
+    let finalAns = s.map((v, i) => v + 5);
+
+    console.log(finalAns);
+
+    let seeResults = (v, i) => {
+      return v + i; // 10 + 0 = 10, 20 + 1 = 21, ...
+    };
+
+    let finalAns1 = s.map(seeResults);
+    console.log(finalAns1);
+    console.log(s);
+
+    /* filter() =>  To create a new array containing only the elements that match a condition
+
+    => Return value: A new array (may be empty or smaller)
+
+    => Used for: Selecting specific items based on criteria
+    */
+
+    let d = [99, 77, 66, 55, 44, 42, 55, 88];
+
+    let filterData = d.filter((v, i) => v % 2 == 0);
+
+    console.log(filterData);
+
+    let filterData1 = d.filter((num) => {
+      if (num % 2 === 1) {
+        // return num;
+        return true;
+      }
+    });
+
+    console.log(filterData1);
+
+    // The filter() method creates a new array with array elements that pass a test.
+
+    let numbers = [45, 4, 9, 16, 25];
+
+    console.log(numbers.filter((v) => v > 4));
+
+    let over9 = numbers.filter((v) => v > 9);
+    console.log(over9);
+
+    const over18 = numbers.filter(myFunction);
+    console.log(over18);
+
+    function myFunction(value) {
+      return value > 18;
+    }
+
+    /* reduce() => The reduce() method runs a function on each array element to produce (reduce it to) a single value.
+
+    => The reduce() method works from left-to-right in the array.
+
+    => The reduce() method can accept an initial value
+
+    => To reduce an array to a single value (number, object, array, string, etc.)
+
+    => Return value: Whatever value you return from the reducer — can be anything
+
+    => Used for: Summing, multiplying, merging, flattening, counting, etc.
+    */
+
+    /*
+    array.reduce((accumulator, currentValue) => {
+
+        accumulator => (the initial value / previously returned value)
+
+        currentValue => (array present value)
+    return updated accumulator
+
+    }, initialValue);
+    */
+
+    const num = [45, 4, 9, 16, 25];
+
+    // for...of
+
+    let num1 = 0;
+    //num1 = 0;  // ← This becomes global (bad practice)
+
+    for (let nums of num) {
+      // Loops over each number in the array (nums takes values like 45, 4, 9, ...)
+      num1 += nums;
+    }
+    console.log(num1);
+
+    let sum = num.reduce(numOfTotal, 100);
+    console.log("the total of num: ", sum);
+
+    function numOfTotal(total, value) {
+      return total + value;
+    }
+
+    /*
+      Cannot access 'numTotal' before initialization
+        let sum1 = num.reduce(numTotal);
+    */
+
+    let numTotal = (total, value) => total - value; // 200 - 45 = 155; 155 - 4 = 151; 151 - 9 = 142; 142 - 16 = 126; 126 - 25 = 101
+
+    let sum1 = num.reduce(numTotal, 200); // here 200 is initial value
+    console.log("the total of num: ", sum1); // 101
+
+    console.log(num.reduce((total, value) => total + value, 100));
+
+    let final = num.reduce((total, value) => {
+      return total + value;
+    }, 100);
+    console.log(final);
+
+    console.log(num.reduce((total, value) => total + value)); // total = initial value => 0; 0 + 45 = 45
+
+    // Flatten an array
+
+    const nested = [[1, 2], [3, 4], [5]];
+
+    const flat = nested.reduce((acc, val) => acc.concat(val), []);
+    console.log(flat);
+
+    // The .concat() method in JavaScript is used to combine (or merge) arrays or strings.
+    // It returns a new array or string without modifying the original.
+
+    // count frequency
+
+    const letters = ["a", "b", "a", "b", "c"];
+
+    const freq = letters.reduce((acc, char) => {
+      acc[char] = (acc[char] || 0) + 1; // if char exits = 1,  otherwise o
+      return acc; // { a: 1 } thats why acc[char]
+    }, {});
+    console.log(freq); // {a: 2, b: 2, c: 1}
+
+    /*
+      acc = {} ← empty object (starting value)
+
+      Looping through: 'a', 'b', 'a', 'c', 'b' or
+
+      Iterate over: ['a', 'a', 'a', 'c', 'b']
+
+      acc['a'] = (acc['a'] || 0) + 1; // undefined → 0 + 1 = 1
+          acc = { a: 1 }
+
+      acc['a'] = (acc['a'] || 0) + 1; // 1 + 1 = 2
+            acc = { a: 2 }
+    */
+
+    /* forEach, map, filter, reduce */
+
+    // this formate undefined bcz forEach does not return anything
+    // const nuls = [1, 2, 3, 4, 5];
+    // console.log(nuls.forEach((n, i) => (n, i)));
+
+    const nuls = [1, 2, 3, 4, 5];
+
+    // forEach - does something
+    nuls.forEach((n, i) => console.log(n, i));
+
+    // map - transforms
+    const squared = nuls.map((n) => n * n);
+    console.log(squared);
+
+    // filter - selects
+    const even = nuls.filter((n) => n % 2 === 0);
+    console.log(even);
+
+    // reduce - turn anything into single value
+
+    const total = nuls.reduce((sum, num) => sum + num * 5, 0);
+    console.log(total);
+  </script>
+</html>
