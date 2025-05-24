@@ -82,26 +82,30 @@
 
     h.splice(1, 2); // (a, b, c) => a = position; b = how many element delete of existing array; c = add element in those position
 
-    console.log(h);
+    console.log(h); // [ 10, 40, 50 ]
 
     h.splice(1, 0, 88, 77); // add 88 & 77 in 1 position, 0 means no delete
-    console.log(h);
+    console.log(h); // [10, 88, 77, 20, 30, 40, 50]
 
     h.splice(1, 2, 90, 100); // add 88 & 77 in 1 position and delete element n[1] to n[2]; means position 1 and position 2
-    console.log(h);
+    console.log(h); // [ 10, 90, 100, 40, 50 ]
+
+    h.splice(4, 2, 90, 100);
+    console.log(h); // [ 10, 20, 30, 40, 50, 90, 100 ]
 
     /* slice() method */
 
     let s = [10, 20, 30, 40, 50];
 
-    let newArray3 = l.slice(0, 2); // (a, b) => a = position (start point), b = less than position (end point) ==> start point equal and less than end point
-    console.log(newArray3);
+    let newArray3 = s.slice(0, 2); // (a, b) => a = position (start point), b = less than position (end point) ==> start point equal and less than end point
+    console.log(newArray3); // [10, 20]
 
-    let newArray4 = l.slice(2, 2);
-    console.log(newArray4);
+    // koto theke koto - 2 theke 2 
+    let newArray4 = s.slice(2, 2); 
+    console.log(newArray4); // []
 
-    let newArray5 = l.slice(2, 4); // here only show position 2 to less than position 4
-    console.log(newArray5);
+    let newArray5 = s.slice(2, 4); // here only show position 2 to less than position 4
+    console.log(newArray5); // [30, 40]
 
     /* flat() method */
 
