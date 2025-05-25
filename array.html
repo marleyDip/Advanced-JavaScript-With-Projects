@@ -61,6 +61,35 @@
     for (let v of p) {
       console.log(v);
     }
+
+    const matrix = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9],
+    ];
+
+    for (const row of matrix) {
+      console.log(row);
+      // [1, 2, 3]
+      // [4, 5, 6]
+      // [7, 8, 9]
+    }
+
+    for (const row of matrix) {
+      for (const cell of row) {
+        console.log(cell);
+        // 1
+        // 2 ... 9
+      }
+    }
+
+    /* compare with forEach => for...of improve code readability, especially when dealing with nested structures or complex operations */
+    matrix.forEach((row) => {
+      row.forEach((cell) => {
+        console.log(cell);
+      });
+    });
+
     // here p values 10, 20, ... store or pass in v
     //  array is special kind of object, so it gives object values one by one, not object numbered index
 
