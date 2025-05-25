@@ -90,6 +90,26 @@
       });
     });
 
+    /* 
+      Breaking and Continuing Loops => These features make for...of more powerful and versatile for complex iteration logic.
+    */
+
+    const number = [1, 2, 3, 4, 5];
+
+    for (const number of numbers) {
+      if (number === 3) {
+        break;
+      }
+      console.log(number); // 1, 2
+    }
+
+    for (const number of numbers) {
+      if (number === 3) {
+        continue;
+      }
+      console.log(number); // 1, 2, 4, 5
+    }
+
     // here p values 10, 20, ... store or pass in v
     //  array is special kind of object, so it gives object values one by one, not object numbered index
 
