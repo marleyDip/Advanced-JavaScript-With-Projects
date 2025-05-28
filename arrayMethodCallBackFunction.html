@@ -39,15 +39,16 @@
 
     let finalAns = s.map((v, i) => v + 5);
 
-    console.log(finalAns);
+    console.log(finalAns); // [ 15, 25, 35, 45, 55 ]
+    console.log(s); // [10, 20, 30, 40, 50]
 
     let seeResults = (v, i) => {
       return v + i; // 10 + 0 = 10, 20 + 1 = 21, ...
     };
 
     let finalAns1 = s.map(seeResults);
-    console.log(finalAns1);
-    console.log(s);
+    console.log(finalAns1); // [ 10, 21, 32, 43, 54 ]
+    console.log(s); // [10, 20, 30, 40, 50]
 
     /* filter() =>  To create a new array containing only the elements that match a condition
 
@@ -60,7 +61,8 @@
 
     let filterData = d.filter((v, i) => v % 2 == 0);
 
-    console.log(filterData);
+    console.log(filterData); // [ 66, 44, 42, 88 ]
+    console.log(d); // [99, 77, 66, 55, 44, 42, 55, 88]
 
     let filterData1 = d.filter((num) => {
       if (num % 2 === 1) {
@@ -69,7 +71,8 @@
       }
     });
 
-    console.log(filterData1);
+    console.log(filterData1); // [ 99, 77, 55, 55 ]
+    console.log(d); // [99, 77, 66, 55, 44, 42, 55, 88]
 
     // The filter() method creates a new array with array elements that pass a test.
 
@@ -122,10 +125,10 @@
       // Loops over each number in the array (nums takes values like 45, 4, 9, ...)
       num1 += nums;
     }
-    console.log(num1);
+    console.log(num1); // 99
 
     let sum = num.reduce(numOfTotal, 100);
-    console.log("the total of num: ", sum);
+    console.log("the total of num: ", sum); // 199
 
     function numOfTotal(total, value) {
       return total + value;
