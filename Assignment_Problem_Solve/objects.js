@@ -344,6 +344,7 @@ let ticketSummary1 = {};
 
 let bookingsInterval = setInterval(() => {
   if (count1 < bookings.length) {
+    // destructing objects
     const { name, flightNum, seatNumber } = bookings[count1];
     bookMethod6(name, flightNum, seatNumber);
 
