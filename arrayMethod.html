@@ -100,8 +100,8 @@
     let newArray3 = s.slice(0, 2); // (a, b) => a = position (start point), b = less than position (end point) ==> start point equal and less than end point
     console.log(newArray3); // [10, 20]
 
-    // koto theke koto - 2 theke 2 
-    let newArray4 = s.slice(2, 2); 
+    // koto theke koto - 2 theke 2
+    let newArray4 = s.slice(2, 2);
     console.log(newArray4); // []
 
     let newArray5 = s.slice(2, 4); // here only show position 2 to less than position 4
@@ -132,8 +132,8 @@
     let v = [10, 20, 30, [77, 80], 40, [45, 60], 50];
 
     let flattened = v.flat().map((x) => x * 2);
-    // flat() first converts [10, [77, 80], 40] to [10, 77, 80, 40]
 
+    // flat() first converts [10, [77, 80], 40] to [10, 77, 80, 40]
     // Then applies map to double each element
 
     console.log(flattened);
