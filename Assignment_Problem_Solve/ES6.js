@@ -636,7 +636,7 @@ console.log(
 ); // [ 2, 4, 6, 8, 10 ]
 
 // odd number with Number range & map
-let oddRange = Array.from({ length: 5 }, (_, i) => i * 2 + 1); // i * 2 + 1
+let oddRange = Array.from({ length: 5 }, (_, i) => i * 2 + 1);
 console.log("\nOdd Number Range using Array.from() with map -", oddRange); // [ 1, 3, 5, 7, 9 ]
 
 // odd number with Number range & map & index + 1
@@ -646,22 +646,32 @@ console.log(
   oddRange1
 ); // [ 1, 3, 5, 7, 9 ]
 
-// Reverse numbers: [5, 4, 3, 2, 1]
+// Reverse numbers
 let reverseNumbers = Array.from({ length: 5 }, (_, i) => 5 - i);
 console.log("\nReverse Numbers using with map -", reverseNumbers); // [ 5, 4, 3, 2, 1 ]
-// Reverse numbers with index + 1: [5, 4, 3, 2, 1]
+
+// Reverse numbers with index + 1
 let reverseNumbers1 = Array.from({ length: 5 }, (_, i) => 5 - (i + 1) + 1);
 console.log("\nReverse Numbers using with map & index + 1 -", reverseNumbers1); // [ 5, 4, 3, 2, 1 ]
 
 // custom range function
 function createRange(start, end, step = 1) {
-  let length = Math.floor(end - start / step + 1);
-  return Array.from({ length }, (_, i) => start + i * step);
+  //let length = Math.floor((end - start) / step + 1);
+  //return Array.from({ length }, (_, i) => start + i * step);
+
+  return Array.from(
+    { length: Math.ceil((end - start) / step + 1) },
+    (_, index) => start + index * step
+  );
 }
 
-console.log("\nCustom Range (1-10):", createRange(1, 5));
-console.log("\nCustom Range (2-10, 2):", createRange(2, 10, 2));
-console.log("\nCustom Range reverse (10-2, -2):", createRange(10, 2, -2));
+console.log("\nCustom Range (1-5):", createRange(1, 5)); // [ 1, 2, 3, 4, 5 ]
+console.log("\nCustom Range (2-10, 2):", createRange(2, 10, 2)); // [ 2, 4, 6, 8, 10 ]
+console.log("\nCustom Range reverse (10-2, -2):", createRange(10, 2, -2)); //  [ 10, 8, 6, 4, 2 ]
+
+// Range & Map
+let squares1 = createRange(1, 5).map((num) => num * num);
+console.log("\nRange squares number with createRange & map -", squares1); //  [ 1, 4, 9, 16, 25 ]
 
 // Using Array.from() to create an array of numbers from a string
 let numString = Array.from("12345", (num) => Number(num));
@@ -671,25 +681,132 @@ console.log("\nString to Array of Numbers using Array.from():", numString); // [
 let evenNumbers = Array.from("123456789", (num) =>
   num % 2 === 0 ? Number(num) : null
 );
+
 console.log(
   "\nString to Array of Even Numbers using Array.from() with map =",
   evenNumbers
 ); // [ null, 2, null, 4, null, 6, null, 8, null ]
 
 // Using Array.from() to create an array of odd numbers from a string and filter out null values
-let evenNumbersFiltered = Array.from("123456789", (num) =>
+let oddNumbersFiltered = Array.from("123456789", (num) =>
   num % 2 !== 1 ? null : Number(num)
 );
+
 console.log(
   "\nString to Array of odd numbers using Array.from() with map & filter =",
-  evenNumbersFiltered.filter((num) => num !== null)
+  oddNumbersFiltered.filter((num) => num !== null)
 ); // [ 1, 3, 5, 7, 9 ]
 
-// let evenNumbers = Array.from("123456789", (num) => {
-//   let n = Number(num);
-//   return n % 2 === 0 ? n : null;
-// }).filter((n) => n !== null);
-// console.log(
-//   "\nString to Array of Even Numbers using Array.from():",
-//   evenNumbers
-// ); // [ 2, 4, 6, 8 ]
+// Using Array.from() to create an array of even numbers from a string and filter out null values
+let evenNumbersFiltered = Array.from("123456789", (num) => {
+  let n = Number(num);
+  return n % 2 === 0 ? n : null;
+}).filter((n) => n !== null);
+
+console.log(
+  "\nString to Array of Even Numbers using map & filter -",
+  evenNumbersFiltered
+); //  [ 2, 4, 6, 8 ]
+
+// Write a program in which you have to set Default value in case of false input value using Logical Assignment Operator?
+
+// 	Assigns if the variable is truthy ( x &&= newValue )
+// Assigns if the variable is null or undefined ( x ??= defaultValue )
+
+let userInput = "";
+
+// Set default value using logical OR assignment
+userInput ||= "guest";
+console.log("Welcome", userInput);
+
+let userAge = 0;
+
+userAge ||= 18;
+console.log("Age -", userAge);
+
+let userEmail = null;
+
+userEmail ??= "no-email@example.com";
+console.log("Email -", userEmail);
+
+// logical and assignment - conditionally update a value only if it's truthy
+let isLoggedIn = true;
+let userName = "Admin";
+
+// Only update if isLoggedIn is true
+isLoggedIn &&= userName;
+console.log("Welcome", isLoggedIn); // Welcome Admin
+
+let isLoggedIn1 = false;
+
+isLoggedIn1 &&= userName;
+console.log("Welcome", isLoggedIn1); // Welcome false
+
+/* Object.entries() = key-value pairs
+
+    => Object.entries(fruits)
+      => Converts the object into an array of key-value pairs:
+          =>  [
+               ['apple', 8],
+               ['orange', 7],
+               ['pear', 5]
+              ]
+    
+      => for (const [fruit, count] of fruitEntries)
+          => Uses destructuring to loop through each [key, value] pair.
+*/
+
+const fruits = { apple: 8, orange: 7, pear: 5 };
+
+const fruitEntries = Object.entries(fruits);
+
+// for (const [fruit, count] of Object.entries(fruits)) {}
+
+for (const [fruit, count] of fruitEntries) {
+  console.log(`There are ${count} ${fruit}${count > 1 ? "s" : ""}`);
+}
+
+for (const fruit in fruits) {
+  console.log(`There are ${fruits[fruit]} ${fruit}s`);
+}
+
+/* Difference between for...in & for...of + Object.entries() 
+
+Feature	                      for...in	                  for...of + Object.entries()
+
+Iterates over	         --- Keys (including inherited ones!) --- Key-value pairs (own enumerable only)
+
+Needs extra access     ---	fruits[fruit] to get value	 --- Value is already unpacked
+
+Safer for objects	     --- May include inherited properties	---  Only iterates own enumerable properties
+
+Preferred for arrays    ---  Not recommended	      --- Yes (use for...of)
+
+Clean destructuring	    --- Not supported	          --- Yes: [key, value] syntax
+*/
+
+// You have given a list of variable names written in underscore. You have to write a program to convert them into camel casing format
+
+let variables = ["user_name", "last_name", "date_of_birth", "user_password"];
+
+function toCamelCase(str) {
+  return str.replace(/_([a-z])/g, (_, char) => char.toUpperCase());
+}
+
+const camelCaseVariables = variables.map(toCamelCase);
+console.log(camelCaseVariables);
+
+/* How it works:
+         => /_([a-z])/g finds any underscore followed by a letter.
+         
+         => The replace() function transforms _x into X (capitalized).
+         
+         => map() applies this transformation to each item in the array. 
+
+         => Regex part: /\_([a-z])/g
+         => _	      = Matches an underscore character _
+         => ([a-z])	= Captures a lowercase letter after _ (e.g., n in _name)
+         => g flag  =	Global: replace all matches in the string
+         
+         => So it matches things like: _n, _p, _b in user_name, user_password, date_of_birth.
+*/
