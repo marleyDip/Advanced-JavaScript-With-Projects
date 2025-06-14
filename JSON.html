@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON</title>
+  </head>
+  <body>
+    <!-- JSON.parse() is a JavaScript method used to convert a JSON string into a JavaScript object. -->
+
+    <!-- JSON.stringify is a JavaScript method used to convert a JavaScript object into a JSON string.
+    -->
+
+    <!-- JSON is data format, JS object is a data structure -->
+    <script>
+      let products = {
+        name: "T Shirt",
+        price: 789,
+        ratings: {
+          stars: 4.5,
+          noOfReviews: 453,
+        },
+      };
+
+      console.log(typeof products); // object
+      console.log(products); // {name: 'T Shirt', price: 789, ratings: {…}}
+
+      let str = JSON.stringify(products);
+      console.log(typeof str); // string
+      console.log(str); // json object {"name":"T Shirt","price":789,"ratings":{"stars":4.5,"noOfReviews":453}}
+
+      let newProduct = JSON.parse(str);
+      console.log(typeof newProduct); // object
+      console.log(newProduct); // json object to js object
+
+      localStorage.setItem("name", "sofian");
+      localStorage.setItem("price", 789);
+
+      console.log(localStorage.getItem("name"));
+
+      let product = {
+        name: "T Shirt",
+        price: 789,
+        ratings: {
+          stars: 4.5,
+          noOfReviews: 453,
+        },
+      };
+
+      // localStorage.setItem("product", product); key - product ---- value - [object Object]
+
+      localStorage.setItem("product", JSON.stringify(product));
+      // key - product
+      // value - {"name":"T Shirt","price":789,"ratings":{"stars":4.5,"noOfReviews":453}}
+
+      /* see in localStorage below...
+
+      {name: "T Shirt", price: 789, ratings: {stars: 4.5, noOfReviews: 453}}
+        name : "T Shirt"
+        price : 789
+        ratings : {stars: 4.5, noOfReviews: 453}
+            noOfReviews : 453
+            stars : 4.5 
+    */
+
+      console.log(localStorage.getItem(product)); // null
+
+      console.log(localStorage.getItem("product")); // {"name":"T Shirt","price":789,"ratings":{"stars":4.5,"noOfReviews":453}}
+
+      let product2 = JSON.parse(localStorage.getItem("product"));
+      console.log(product2);
+
+      /* {name: 'T Shirt', price: 789, ratings: {…}}
+        name : "T Shirt"
+        price : 789
+        ratings : {stars: 4.5, noOfReviews: 453}
+        
+        ratings: 
+            noOfReviews: 453
+            stars: 4.5 
+    */
+
+      localStorage.removeItem("price");
+      localStorage.clear();
+    </script>
+  </body>
+</html>
