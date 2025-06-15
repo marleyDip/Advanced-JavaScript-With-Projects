@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Array Exercise</title>
+  </head>
+  <body>
+    <script>
+      /* Create a while loop that exits after counting 5 prime numbers & Modify the above loop to finish using break */
+
+      function isPrime(num) {
+        if (num <= 1) return false;
+
+        //for (let i = 2; i < num; i++) here need check 2 to 99
+
+        // but here, √100 = 10; so check 2 to 10
+        // √29 = 5.38; check 2, 3, 4, 5...don't need check 2 to 28
+
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      console.log(isPrime(100));
+      console.log(isPrime(29));
+
+      let num = 2;
+      let i = 0;
+
+      while (true) {
+        if (isPrime(num)) {
+          // if true, print and increase i
+          console.log(num);
+          i++;
+
+          if (i >= 10) {
+            break;
+
+            // num++; Only increment if prime
+          }
+        }
+        num++; // Increment if not prime
+      }
+
+      //   while (i < 5) {
+      //     if (isPrime(num)) {
+      //       console.log(num);
+      //       i++;
+      //     }
+      //     num++;
+      //   }
+
+      /* Using continue only print positive numbers from the given array [1, -6, 5, 7, -98] */
+
+      let nums = [1, -6, 5, 7, -98];
+
+      for (let i = 0; i < nums.length; i++) {
+        if (nums[i] < 0) continue;
+
+        console.log(nums[i]);
+      }
+
+      /* Using accumulator pattern concatenate all the strings in the given array ['Deep', 'Coding', 'JavaScript', 'Course', 'Is', 'Best'] */
+
+      let arr = ["Deep", "Coding", "JavaScript", "Course", "Is", "Best"];
+
+      let result = "";
+      for (let i = 0; i < arr.length; i++) {
+        result += arr[i] + " -";
+      }
+
+      console.log(result); // Deep - Coding - JavaScript - Course - Is - Best -
+
+      console.log(arr.join("")); //DeepCodingJavaScriptCourseIsBest
+
+      console.log(arr.join(",")); // Deep,Coding,JavaScript,Course,Is,Best
+
+      console.log(arr.join(" ")); //Deep Coding JavaScript Course Is Best
+    </script>
+  </body>
+</html>
