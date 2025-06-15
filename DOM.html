@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DOM Manipulation</title>
+    <style>
+      body {
+        text-align: center;
+      }
+
+      #my-button {
+        height: 50px;
+        width: 50px;
+        font-size: 25px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .odd {
+        background-color: aqua;
+      }
+      .even {
+        background-color: lawngreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Times of Button Pressed</h2>
+    <button id="my-button" onclick="buttonPressed()"></button>
+
+    <script>
+      //let noOfTimesClicked = 0;
+
+      let noOfTimesClicked = localStorage.getItem("noOfTimesClicked") || 0;
+
+      function buttonPressed() {
+        noOfTimesClicked++;
+
+        localStorage.setItem("noOfTimesClicked", noOfTimesClicked);
+
+        updateButton();
+      }
+
+      function updateButton() {
+        let button = document.querySelector("#my-button");
+
+        if (noOfTimesClicked % 2 === 0) {
+          button.classList.add("even");
+          button.classList.remove("odd");
+        } else {
+          button.classList.remove("even");
+          button.classList.add("odd");
+        }
+
+        button.innerText = noOfTimesClicked;
+      }
+
+      updateButton();
+    </script>
+  </body>
+</html>
