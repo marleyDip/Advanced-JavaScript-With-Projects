@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Advanced Function Exercise</title>
+    <style>
+      .btn-subscribe {
+        font-weight: 15px;
+        height: 40px;
+        width: 80px;
+        background-color: rgb(217, 17, 17);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .js-size-double {
+        font-size: 30px;
+        height: 80px;
+        width: 160px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>
+      Create a variable multiply and assign a function to this variable that
+      multiplies two numbers. call this method from the variable
+    </h3>
+    <h4 id="arrowFunction"></h4>
+
+    <h3>
+      create a function runTwice that takes a function as a parameter and then
+      runs that method twice (CallBack Function)
+    </h3>
+    <h4 id="callbackFunction"></h4>
+
+    <h3>
+      Create a button which should grow double in size on clicking after 2
+      seconds
+    </h3>
+
+    <!-- short trick, when call setTimeout..no need to round bracket or parenthesis after function name bcz setTimeout upon call the method -->
+
+    <!-- <button class="btn-subscribe" onclick="setTimeout(doubleTheSize, 2000)" ;>
+      Subscribe
+    </button> -->
+
+    <button class="btn-subscribe">Subscribe</button>
+
+    <h3 id="forEach">
+      Create a function that sums an array of numbers. Do this using forEach
+      loop
+    </h3>
+    <h4 id="array"></h4>
+    <h4 id="result"></h4>
+
+    <h3>
+      Create a function that takes an array of numbers and return their squares
+      using map function
+    </h3>
+    <h4 id="map"></h4>
+
+    <script>
+      let multiply = (num1, num2) => num1 * num2;
+
+      let num = 5,
+        num2 = 6;
+
+      document.querySelector(
+        "#arrowFunction"
+      ).innerText = ` => Multiplication of ${num} & ${num2} is ${multiply(
+        num,
+        num2
+      )}`;
+
+      console.log(multiply(5, 6));
+
+      let printGreeting = () => console.log("Hello, Mr. Sofian");
+
+      let printGreeting1 = () => {
+        let element = document.querySelector("#callbackFunction");
+        element.innerText += "=> Hello, Mr. Sofian\n";
+      };
+
+      let runTwice = (inputFunction) => {
+        inputFunction();
+        inputFunction();
+      };
+
+      runTwice(printGreeting);
+      runTwice(printGreeting1);
+
+      let buttonElement = document.querySelector(".btn-subscribe");
+
+      buttonElement.addEventListener("click", () => {
+        setTimeout(() => {
+          buttonElement.classList.add("js-size-double");
+        }, 2000);
+      });
+
+      /* buttonElement.addEventListener("click", (event) =>
+        setTimeout(doubleTheSize, 2000)
+      ); */
+
+      function doubleTheSize() {
+        let buttonElement = document.querySelector(".btn-subscribe");
+        buttonElement.classList.add("js-size-double");
+      }
+
+      let arr = [10, 20, 30, 40, 50];
+      let sum = 0;
+
+      arr.forEach((num) => {
+        sum += num;
+      });
+
+      //   let forEachMethod = document.querySelector("#forEach");
+      //   forEachMethod.innerText = `Sum is ${sum}`;
+
+      console.log(sum);
+      console.log(arr);
+
+      function sumOfArray(numbers) {
+        let sum = 0;
+
+        numbers.forEach((num) => {
+          sum += num;
+        });
+
+        return sum;
+      }
+
+      let array = [10, 20, 30, 40, 50];
+      let total = sumOfArray(array);
+
+      document.querySelector("#array").innerText = `Array = (${
+        array.length
+      }) [${array.join(", ")}]`;
+
+      document.querySelector("#result").innerText = `=> Sum is ${total}`;
+
+      // forEach doesn't return anything; its just takes once all values for each array elements using callback function
+
+      let squares = array.map((num) => num * num);
+
+      document.querySelector("#map").innerText = `=> Array of Squares (${
+        squares.length
+      }) [${squares.join(", ")}]`;
+      console.log(squares);
+    </script>
+  </body>
+</html>
