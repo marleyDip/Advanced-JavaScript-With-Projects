@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Add Property</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        font-family: sans-serif;
+      }
+
+      .modal {
+        width: 350px;
+        height: 350px;
+        box-shadow: 0px 0px 10px 2px #ccc;
+        position: fixed;
+        transition: 0.5s;
+        top: -500px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .modal h2 {
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        font-weight: normal;
+        font-size: 20px;
+        padding: 10px 0px;
+        position: relative;
+      }
+
+      .modal h2 span {
+        position: absolute;
+        right: 10px;
+        top: 0px;
+        font-size: 30px;
+        cursor: pointer;
+      }
+
+      .showModal {
+        top: 50%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- When click show modal then form open class = 'modal showModal' and when cross then hide class= 'modal' -->
+    <div class="modal">
+      <h2>
+        Enquiry Now
+        <span>&times;</span>
+      </h2>
+    </div>
+
+    <button>Show Modal</button>
+    <button id="btn1">Toggle Modal</button>
+  </body>
+
+  <script>
+    let btn = document.querySelector("button");
+    let modal = document.querySelector(".modal");
+    let closeIcon = document.querySelector(".modal h2 span");
+
+    btn.addEventListener("click", () => {
+      //alert("Welcome Sofian");
+      modal.classList.add("showModal");
+    });
+
+    closeIcon.addEventListener("click", () => {
+      modal.classList.remove("showModal");
+    });
+
+    document.querySelector("#btn1").addEventListener("click", () => {
+      modal.classList.toggle("showModal");
+    });
+
+    /* classList => add, remove, toggle */
+  </script>
+</html>

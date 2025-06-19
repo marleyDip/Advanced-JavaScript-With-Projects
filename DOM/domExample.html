@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Exercise</title>
+  </head>
+  <body>
+    <h1 id="heading">Welcome to <u>Sofian</u> Hasan</h1>
+
+    <p id="output"></p>
+  </body>
+  <script>
+    let heading = document.getElementById("heading");
+
+    console.log(heading); // <h1 id="heading">"Welcome to "<u>Sofian</u>" Hasan"</h1>
+
+    console.log(heading.innerText); //Welcome to Sofian Hasan
+
+    console.log(heading.innerHTML); //Welcome to <u>Sofian</u> Hasan
+
+    let para = document.getElementById("output");
+    para.innerHTML = heading.innerHTML;
+
+    //para.innerText = heading.innerHTML; Welcome to <u>Sofian</u> Hasan
+  </script>
+</html>

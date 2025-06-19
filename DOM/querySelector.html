@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Query Selector</title>
+  </head>
+  <body>
+    Num1 <input type="text" class="input" placeholder="Enter the value1" />
+    <br />
+
+    Num2 <input type="text" class="input" placeholder="Enter the value1" />
+    <br />
+
+    <button>Save</button> <br />
+
+    Output <input type="text" class="input" placeholder="Enter the value3" />
+  </body>
+  <script>
+    let input = document.querySelector(".input");
+    console.log(input);
+
+    //TagName Used
+    // let allInput = document.querySelectorAll("input")
+
+    let allInput = document.querySelectorAll(".input");
+    console.log(allInput); //NodeList(3) [input.input, input.input, input.input] => is like array
+
+    console.log(allInput[0]);
+    console.log(allInput[1]);
+    console.log(allInput[2]);
+    console.log(allInput[5]);
+
+    let btn = document.querySelector("button");
+
+    btn.addEventListener("click", () => {
+      //alert("Welcome Sofian");
+      //   let input1Value = allInput[0].value;
+      //   let input2Value = allInput[1].value;
+      //   console.log(
+      //     input1Value,
+      //     typeof input1Value,
+      //     input2Value,
+      //     typeof input2Value
+      //   ); // 4 string 4 string
+
+      let input1Value = Number(allInput[0].value);
+      let input2Value = Number(allInput[1].value);
+
+      let output = input1Value + input2Value;
+      console.log(
+        `The Output of Addition ${input1Value} & ${input2Value} is ${output}`
+      );
+
+      allInput[2].value = output;
+
+      // blank the value
+      allInput[0].value = "";
+      allInput[1].value = "";
+    });
+  </script>
+</html>
